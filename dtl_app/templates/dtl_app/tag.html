@@ -1,0 +1,27 @@
+{% load customs %}
+<div class="p-4 bg-body-tertiary border">
+  <h2 class="mb-4 text-center">
+    <span class="badge bg-info">{{ tag.name }}</span>
+  </h2>
+  <div class="p-4 bg-body rounded-3 shadow-sm mb-3">
+    {{ tag.description|linebreaks }}
+  </div>
+  <h4 class="ms-2 mb-2">
+    Синтаксис:
+  </h4>
+  <div class="p-4 bg-body-secondary rounded-3 border">
+    {% if tag.syntax %}
+      {{ tag.syntax|linebreaksbr }}
+    {% else %}
+      {{ tag.example|linebreaksbr }}
+    {% endif %}
+  </div>
+  {% if tag.example %}
+    <h4 class="ms-2 mt-4 mb-2">
+      Результат:
+    </h4>
+    <div class="p-4 bg-body-secondary rounded-3 border">
+      {% render_txt tag.example %}
+    </div>
+  {% endif %}
+</div>
